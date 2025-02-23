@@ -9,7 +9,7 @@ import urllib.request
 
 @st.cache_resource
 def load_model():
-    file_id = "1-0FGD3yfC2OrVpce7Q9RnAwUkzXdreNg"  # Get this from Google Drive
+    file_id = "0FGD3yfC2OrVpce7Q9RnAwUkzXdreNg"  # Get this from Google Drive
     model_path = "densenet_model.keras"
     model_url = f"https://drive.google.com/uc?id={file_id}"
     
