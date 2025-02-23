@@ -52,7 +52,10 @@ if uploaded_file is not None:
 
     # Make predictions
     predictions = model.predict(img_array)
+    
+    # Get the predicted class index and its corresponding probability
     predicted_class_idx = np.argmax(predictions, axis=1)
+    predicted_class_prob = predictions[0][predicted_class_idx]  # Probability of predicted class
 
     # Map the numerical prediction index to the actual class label
     predicted_class_label = class_labels[predicted_class_idx[0]]
