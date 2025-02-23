@@ -5,18 +5,23 @@ from PIL import Image
 
 import streamlit as st
 import tensorflow as tf
+import urllib.request
 
 @st.cache_resource
 def load_model():
-    model_path = "densenet_model.keras"  # Use the .keras file format
+    file_id = "1-0FGD3yfC2OrVpce7Q9RnAwUkzXdreNg"  # Get this from Google Drive
+    model_path = "densenet_model.keras"
+    model_url = f"https://drive.google.com/uc?id={file_id}"
+    
+    # Download model if not already present
+    urllib.request.urlretrieve(model_url, model_path)
+    
+    # Load the model
     model = tf.keras.models.load_model(model_path)
     return model
 
 model = load_model()
 st.write("✅ Model loaded successfully!")
-
-
-model = load_model()
 
 # Streamlit app UI
 st.title("🖼️ Image Classification with CNN")
