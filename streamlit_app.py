@@ -3,11 +3,18 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 
-# Load your trained CNN model (update the path as needed)
+import streamlit as st
+import tensorflow as tf
+
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("your_model.h5")  # Replace with your model file
+    model_path = "densenet_model.keras"  # Use the .keras file format
+    model = tf.keras.models.load_model(model_path)
     return model
+
+model = load_model()
+st.write("✅ Model loaded successfully!")
+
 
 model = load_model()
 
