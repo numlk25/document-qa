@@ -9,7 +9,7 @@ import tensorflow as tf
 import urllib.request
 
 # Class labels (ensure this corresponds to the order of your model's classes)
-class_labels = ['Mosquito', 'Grasshopper', 'Butterfly', 'Dragonfly', 'Ladybird']
+class_labels = ['Mosquito', 'Butterfly', 'Grasshopper', 'Dragonfly', 'Ladybird']
 
 @st.cache_resource
 def load_model():
