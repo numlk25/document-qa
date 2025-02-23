@@ -43,7 +43,7 @@ uploaded_file = st.file_uploader("Upload an image (JPG, PNG, JPEG)", type=["jpg"
 if uploaded_file is not None:
     # Load and display the image
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # Preprocess the image to match model input size
     img = image.resize((224, 224))  
