@@ -8,6 +8,9 @@ import streamlit as st
 import tensorflow as tf
 import urllib.request
 
+# Class labels (ensure this corresponds to the order of your model's classes)
+class_labels = ['Mosquito', 'Grasshopper', 'Butterfly', 'Dragonfly', 'Ladybird']
+
 @st.cache_resource
 def load_model():
     file_id = "1g9o_InQ2add--WVq1PmMT7whqjD6dumR"  # Replace with actual file ID from Google Drive
@@ -43,13 +46,16 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
     # Preprocess the image to match model input size
-    img = image.resize((224, 224))  # Change size according to your model
+    img = image.resize((224, 224))  
     img_array = np.array(img) / 255.0  # Normalize
-    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+    img_array = np.expand_dims(img_array, axis=0) 
 
     # Make predictions
     predictions = model.predict(img_array)
-    predicted_class = np.argmax(predictions, axis=1)
+    predicted_class_idx = np.argmax(predictions, axis=1)
+
+    # Map the numerical prediction index to the actual class label
+    predicted_class_label = class_labels[predicted_class_idx[0]]
 
     # Display results
-    st.write(f"**Predicted Class:** {predicted_class[0]}")  # Map class index to label if needed
+    st.write(f"**Predicted Class:** {predicted_class_label}")
