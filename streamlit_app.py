@@ -53,6 +53,10 @@ if uploaded_file is not None:
     # Make predictions
     predictions = model.predict(img_array)
     
+
+    # Make predictions
+    predictions = model.predict(img_array)
+    
     # Get the predicted class index and its corresponding probability
     predicted_class_idx = np.argmax(predictions, axis=1)
     predicted_class_prob = predictions[0][predicted_class_idx]  # Probability of predicted class
@@ -61,7 +65,7 @@ if uploaded_file is not None:
     predicted_class_label = class_labels[predicted_class_idx[0]]
 
     # Calculate the percentage likelihood
-    predicted_class_percentage = predicted_class_prob * 100
+    predicted_class_percentage = predicted_class_prob[0] * 100  # Convert to percentage
 
     # Display results
     st.write(f"**Predicted Class:** {predicted_class_label}")
