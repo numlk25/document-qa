@@ -9,9 +9,9 @@ import urllib.request
 
 @st.cache_resource
 def load_model():
-    file_id = "0FGD3yfC2OrVpce7Q9RnAwUkzXdreNg"  # Get this from Google Drive
+    file_id = "1-0FGD3yfC2OrVpce7Q9RnAwUkzXdreNg"  # Get this from Google Drive
     model_path = "densenet_model.keras"
-    model_url = f"https://drive.google.com/uc?id={file_id}"
+    model_url = f"https://drive.google.com/uc?export=download&id={file_id}"
     
     # Download model if not already present
     urllib.request.urlretrieve(model_url, model_path)
