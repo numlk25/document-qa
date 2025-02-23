@@ -2,7 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-import gdown
+
 import os
 import streamlit as st
 import tensorflow as tf
@@ -16,7 +16,8 @@ def load_model():
 
     # Download only if the model is not already present
     if not os.path.exists(model_path):
-        gdown.download(model_url, model_path, quiet=False)
+        st.write("Downloading model...")
+        urllib.request.urlretrieve(model_url, model_path)
 
     # Check if the file exists before loading
     if not os.path.exists(model_path):
@@ -26,7 +27,7 @@ def load_model():
     # Load the model from .h5
     model = tf.keras.models.load_model(model_path, compile=False)
     return model
-
+    
 model = load_model()
 
 
