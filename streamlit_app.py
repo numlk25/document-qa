@@ -9,19 +9,25 @@ import urllib.request
 
 @st.cache_resource
 def load_model():
-    file_id = "1-0FGD3yfC2OrVpce7Q9RnAwUkzXdreNg"  # Get this from Google Drive
-    model_path = "densenet_model"
+    file_id = "1g9o_InQ2add--WVq1PmMT7whqjD6dumR"  # Replace with actual file ID from Google Drive
+    model_path = "densenet_model.h5"  # Change to .h5
     model_url = f"https://drive.google.com/uc?export=download&id={file_id}"
-    
-    # Download model if not already present
-    urllib.request.urlretrieve(model_url, model_path)
-    
-    # Load the model
-    model = tf.keras.models.load_model(model_path)
+
+    # Download only if the model is not already present
+    if not os.path.exists(model_path):
+        gdown.download(model_url, model_path, quiet=False)
+
+    # Check if the file exists before loading
+    if not os.path.exists(model_path):
+        st.error("Model file was not found after download.")
+        return None
+
+    # Load the model from .h5
+    model = tf.keras.models.load_model(model_path, compile=False)
     return model
 
 model = load_model()
-st.write("✅ Model loaded successfully!")
+
 
 # Streamlit app UI
 st.title("🖼️ Image Classification with CNN")
