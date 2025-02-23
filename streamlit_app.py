@@ -57,5 +57,9 @@ if uploaded_file is not None:
     # Map the numerical prediction index to the actual class label
     predicted_class_label = class_labels[predicted_class_idx[0]]
 
+    # Calculate the percentage likelihood
+    predicted_class_percentage = predicted_class_prob * 100
+
     # Display results
     st.write(f"**Predicted Class:** {predicted_class_label}")
+    st.write(f"**Confidence:** {predicted_class_percentage:.2f}%")
