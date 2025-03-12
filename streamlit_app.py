@@ -8,8 +8,8 @@ import streamlit as st
 import tensorflow as tf
 import urllib.request
 
-# Class labels (ensure this corresponds to the order of your model's classes)
-class_labels = ['Mosquito', 'Butterfly', 'Grasshopper', 'Dragonfly', 'Ladybird']
+# Class labels (ensure this corresponds to the order of your model's classes. in my case, it's insects)
+class_labels = ['Butterfly', 'Dragonfly', 'Grasshopper', 'Ladybird', 'Mosquito']
 
 @st.cache_resource
 def load_model():
@@ -52,10 +52,8 @@ if uploaded_file is not None:
 
     # Make predictions
     predictions = model.predict(img_array)
-    
 
-    # Make predictions
-    predictions = model.predict(img_array)
+    
     
     # Get the predicted class index and its corresponding probability
     predicted_class_idx = np.argmax(predictions, axis=1)
