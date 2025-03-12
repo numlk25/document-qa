@@ -37,6 +37,9 @@ model = load_model()
 # Streamlit app UI
 st.title("🖼️ Image Classification with CNN")
 
+# Streamlit explanation of model
+st.write("This is a CNN model that classifies insects. The relevant groups are: 'Butterfly', 'Dragonfly', 'Grasshopper', 'Ladybird', and 'Mosquito'.")
+
 # File uploader for images
 uploaded_file = st.file_uploader("Upload an image (JPG, PNG, JPEG)", type=["jpg", "png", "jpeg"])
 
